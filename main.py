@@ -2,12 +2,17 @@ import tkinter as tk
 from tkinter import ttk
 import random
 
+MAX_INPUT = 1000
+
 def pick_number():
     try:
         fNum = int(fNum_var.get())
         sNum = int(sNum_var.get())
         if fNum > sNum:
-            result.config(text = "First Number must be less than Second Number.")
+            result.config(text = "Error: First less than Second!")
+            return
+        if sNum > MAX_INPUT:
+            result.config(text = f"Error: Second number < {MAX_INPUT}")
             return
         number = random.randint(fNum, sNum)
         result.config(text = f"Your pick is: {number}")
